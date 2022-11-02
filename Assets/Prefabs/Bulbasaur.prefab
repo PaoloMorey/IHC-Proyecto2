@@ -1306,7 +1306,7 @@ GameObject:
   - component: {fileID: 4839411429298699299}
   - component: {fileID: 4839411429298699307}
   m_Layer: 0
-  m_Name: Bulbasaur_anim_Attack
+  m_Name: Bulbasaur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,7 +8,7 @@ public class CatchPokemon : MonoBehaviour
     {
         if (collision.transform.CompareTag("Pokeball")) {
             Debug.Log("Catching "+name);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

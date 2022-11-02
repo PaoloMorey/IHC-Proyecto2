@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SpawnController : MonoBehaviour
 {
+    [SerializeField]
     Vector3 upperLeft = new Vector3(5, 5, 5);
+    [SerializeField]
     Vector3 bottomRight = new Vector3(55, 5, 55);
-    GameObject spawn;
     
     [SerializeField]
     int rows;
@@ -15,6 +16,12 @@ public class SpawnController : MonoBehaviour
 
     [SerializeField]
     GameObject[] pokemonArr;
+    [SerializeField]
+    GameObject pokeball;
+    [SerializeField]
+    float minOffset = 3.0f;
+    [SerializeField]
+    float maxOffset = 5.0f;
 
     void Start()
     {
@@ -29,6 +36,9 @@ public class SpawnController : MonoBehaviour
                 GameObject newSpawn = Instantiate(pokemon, new Vector3(upperLeft.x + incrX*i, 
                                         upperLeft.y, 
                                         upperLeft.z + incrZ*j), pokemon.transform.rotation);
+                Instantiate(pokeball, new Vector3(upperLeft.x + incrX*i + Random.Range(minOffset, maxOffset), 
+                                                upperLeft.y, 
+                                                upperLeft.z + incrZ*j + Random.Range(minOffset, maxOffset)), pokeball.transform.rotation);
                 newSpawn.transform.parent = transform;
                 newSpawn.AddComponent<CatchPokemon>();
             }
