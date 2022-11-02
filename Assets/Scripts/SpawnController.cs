@@ -4,32 +4,35 @@ using UnityEngine;
 
 public class SpawnController : MonoBehaviour
 {
-    Transform upperLeft;
-    Transform bottomRight;
+    Vector3 upperLeft = new Vector3(5, 5, 5);
+    Vector3 bottomRight = new Vector3(55, 5, 55);
     GameObject spawn;
     
     [SerializeField]
     int rows;
     [SerializeField]
-    int cols;  
+    int cols;
+
+    [SerializeField]
+    GameObject[] pokemonArr;
 
     void Start()
     {
-        spawn = GameObject.Find("UpperLeft");
-        upperLeft = spawn.transform;
-        bottomRight = GameObject.Find("BottomRight").transform;
+        // spawn = GameObject.Find("UpperLeft");
+        // upperLeft = spawn.transform;
+        // bottomRight = GameObject.Find("BottomRight").transform;
 
-        float incrX = (bottomRight.position.x - upperLeft.position.x) / (rows - 1.0f);
-        float incrZ = (bottomRight.position.z - upperLeft.position.z) / (cols - 1.0f);
+        float incrX = (bottomRight.x - upperLeft.x) / (rows - 1.0f);
+        float incrZ = (bottomRight.z - upperLeft.z) / (cols - 1.0f);
 
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < cols; j++)
             {
-                if ((i == 0 && j == 0) || (i == rows-1 && j == cols-1)) continue;
-                GameObject newSpawn = Instantiate(spawn, new Vector3(upperLeft.position.x + incrX*i, 
-                                        upperLeft.position.y, 
-                                        upperLeft.position.z + incrZ*j), spawn.transform.rotation);
+                GameObject pokemon = pokemonArr[Random.Range(0, pokemonArr.Length)];
+                GameObject newSpawn = Instantiate(pokemon, new Vector3(upperLeft.x + incrX*i, 
+                                        upperLeft.y, 
+                                        upperLeft.z + incrZ*j), pokemon.transform.rotation);
                 newSpawn.transform.parent = transform;
             }
         }
