@@ -30,6 +30,7 @@ public class SpawnController : MonoBehaviour
                                         upperLeft.y, 
                                         upperLeft.z + incrZ*j), pokemon.transform.rotation);
                 newSpawn.transform.parent = transform;
+                newSpawn.AddComponent<CatchPokemon>();
             }
         }
     }
