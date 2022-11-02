@@ -18,10 +18,6 @@ public class SpawnController : MonoBehaviour
 
     void Start()
     {
-        // spawn = GameObject.Find("UpperLeft");
-        // upperLeft = spawn.transform;
-        // bottomRight = GameObject.Find("BottomRight").transform;
-
         float incrX = (bottomRight.x - upperLeft.x) / (rows - 1.0f);
         float incrZ = (bottomRight.z - upperLeft.z) / (cols - 1.0f);
 
