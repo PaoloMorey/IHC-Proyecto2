@@ -214,7 +214,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 106.74, y: -93.16, z: 57.7}
 --- !u!1001 &513595377
 PrefabInstance:
@@ -468,8 +468,9 @@ MonoBehaviour:
   rows: 6
   cols: 6
   pokemonArr:
-  - {fileID: 6334504034961280014, guid: 6e8a96aad2f21324686501218bd0cdf5, type: 3}
-  - {fileID: 7392012354845119690, guid: 8d728032d17d1044193463b3627eec42, type: 3}
+  - {fileID: 592445357475117997, guid: 6e8a96aad2f21324686501218bd0cdf5, type: 3}
+  - {fileID: 5076218646116024856, guid: 8d728032d17d1044193463b3627eec42, type: 3}
+  - {fileID: 905992879702158045, guid: b8b897ef988d3fe47af4961063b3eb6d, type: 3}
 --- !u!1001 &1302150549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -617,7 +618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4279449019447086, guid: eded051879df4c147b9010199d240258, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4279449019447086, guid: eded051879df4c147b9010199d240258, type: 3}
       propertyPath: m_LocalScale.x
