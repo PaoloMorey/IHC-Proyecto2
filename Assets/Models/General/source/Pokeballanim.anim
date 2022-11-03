@@ -1614,7 +1614,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 8.541667
+    m_StopTime: 8.625
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -7239,4 +7239,11 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 8.625
+    functionName: DestroyEvent
+    data: 
+    objectReferenceParameter: {fileID: 4462996971698644138, guid: e38c01e52589b6f46ba2c2b07f48a1cf, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
