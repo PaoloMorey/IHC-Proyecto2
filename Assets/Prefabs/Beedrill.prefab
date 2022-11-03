@@ -819,9 +819,10 @@ GameObject:
   - component: {fileID: 3750954971677016558}
   - component: {fileID: 3712277609031542275}
   - component: {fileID: 8734618186618427726}
+  - component: {fileID: 1848481454648707666}
   m_Layer: 0
   m_Name: Beedrill
-  m_TagString: Untagged
+  m_TagString: Pokemon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -877,6 +878,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.1
   m_Center: {x: 0, y: 1.75, z: 0}
+--- !u!114 &1848481454648707666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4559262406848224084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd11cda7bca52746906f5bd39fffb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  catchRate: 45
 --- !u!1 &4637920229021129987
 GameObject:
   m_ObjectHideFlags: 0

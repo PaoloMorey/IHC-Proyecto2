@@ -40,7 +40,7 @@ public class SpawnController : MonoBehaviour
                                                 upperLeft.y, 
                                                 upperLeft.z + incrZ*j + Random.Range(minOffset, maxOffset)), pokeball.transform.rotation);
                 newSpawn.transform.parent = transform;
-                newSpawn.AddComponent<CatchPokemon>();
+                newSpawn.GetComponent<PokemonData>().SetRandomLevel(5, 20);
             }
         }
     }

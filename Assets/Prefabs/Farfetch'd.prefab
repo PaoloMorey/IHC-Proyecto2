@@ -351,9 +351,10 @@ GameObject:
   - component: {fileID: 23593771163284000}
   - component: {fileID: 5324966940618837935}
   - component: {fileID: 5324966940618837934}
+  - component: {fileID: 7380155045416865736}
   m_Layer: 0
   m_Name: Farfetch'd
-  m_TagString: Untagged
+  m_TagString: Pokemon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -422,6 +423,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &7380155045416865736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905992879702158045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd11cda7bca52746906f5bd39fffb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  catchRate: 45
 --- !u!1 &927050112159907485
 GameObject:
   m_ObjectHideFlags: 0
