@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class PokemonManager : MonoBehaviour
 {
-    private List<PokemonVariables> listPokemon; // RAM
+    private List<ModelPokemon> listMemoryPokemon; // disk in MongoDB
+    private List<ModelPokemon> listRamPokemon; // RAM
+    private DatabaseManager dbManager;
 
     void Start()
     {
-        listPokemon = new List<PokemonVariables>();
+        dbManager = FindObjectsOfType<DatabaseManager>()[0];
+        listMemoryPokemon = dbManager.GetPokemonSortByDescendingCapturedAt();
+        listRamPokemon = new List<ModelPokemon>();
     }
 
-    public void AddPokemon(PokemonVariables pokemon)
+    public void AddPokemon(ModelPokemon pokemon)
     {
-        listPokemon.Add(pokemon);
+        listRamPokemon.Add(pokemon);
     }
 
-    public List<PokemonVariables> GetPokemon()
+    public List<ModelPokemon> GetRamPokemon()
     {
-        return listPokemon;
+        return listRamPokemon;
     }
 }

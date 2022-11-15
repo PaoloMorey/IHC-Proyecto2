@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MongoDB.Driver;
 
-public class DatabaseAccess : MonoBehaviour
+public class DatabaseManager : MonoBehaviour
 {
     private const string MONGO_URI = "mongodb+srv://admin:uiXQhRYHEpbXQO0o@pokemonvr.wxfm8vr.mongodb.net/test";
     private const string DATABASE_NAME = "PokemonVR_DB";
@@ -14,10 +14,11 @@ public class DatabaseAccess : MonoBehaviour
     {
         client = new MongoClient(MONGO_URI);
         db = client.GetDatabase(DATABASE_NAME);
-        // QUERY POKÉMON MÁS RECIENTES
-        // List<ModelPokemon> res  = db.GetCollection<ModelPokemon>("Pokemon").Find(pokemon => true).SortByDescending(i => i.capturedAt).ToList();
-        // foreach (ModelPokemon e in res)
-        //     Debug.Log(e.capturedAt);
+    }
+
+    public List<ModelPokemon> GetPokemonSortByDescendingCapturedAt()
+    {
+        return db.GetCollection<ModelPokemon>("Pokemon").Find(pokemon => true).SortByDescending(i => i.capturedAt).ToList();;
     }
 
     void OnApplicationQuit()
@@ -32,13 +33,9 @@ public class DatabaseAccess : MonoBehaviour
         catch {}
 
         IMongoCollection<ModelPokemon> pokemonCollection = db.GetCollection<ModelPokemon>("Pokemon");
-        List<PokemonVariables> listPokemon = FindObjectsOfType<PokemonManager>()[0].GetPokemon();
-        foreach (PokemonVariables pokemon in listPokemon)
+        List<ModelPokemon> listPokemon = FindObjectsOfType<PokemonManager>()[0].GetRamPokemon();
+        foreach (ModelPokemon modelPokemon in listPokemon)
         {
-            ModelPokemon modelPokemon = new ModelPokemon();
-            modelPokemon.name = pokemon.name;
-            modelPokemon.level = pokemon.level;
-            modelPokemon.capturedAt = System.DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
             pokemonCollection.InsertOne(modelPokemon);
         }
     }
