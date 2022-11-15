@@ -19,9 +19,9 @@ public class SpawnController : MonoBehaviour
     [SerializeField]
     GameObject pokeball;
     [SerializeField]
-    float minOffset = 3.0f;
+    float minOffset = 2.0f;
     [SerializeField]
-    float maxOffset = 5.0f;
+    float maxOffset = 4.0f;
 
     void Start()
     {
@@ -36,11 +36,15 @@ public class SpawnController : MonoBehaviour
                 GameObject newSpawn = Instantiate(pokemon, new Vector3(upperLeft.x + incrX*i, 
                                         upperLeft.y, 
                                         upperLeft.z + incrZ*j), pokemon.transform.rotation);
-                Instantiate(pokeball, new Vector3(upperLeft.x + incrX*i + Random.Range(minOffset, maxOffset), 
+                GameObject newPokeball = Instantiate(pokeball, new Vector3(upperLeft.x + incrX*i + Random.Range(minOffset, maxOffset), 
                                                 upperLeft.y, 
                                                 upperLeft.z + incrZ*j + Random.Range(minOffset, maxOffset)), pokeball.transform.rotation);
                 newSpawn.transform.parent = transform;
-                newSpawn.GetComponent<PokemonData>().SetRandomLevel(5, 20);
+                PokemonVariables pokemonVariables = newSpawn.GetComponent<PokemonVariables>();
+                pokemonVariables.SetRandomLevel(5, 20);
+                pokemonVariables.name = newSpawn.name.Replace("(Clone)", "");
+                newSpawn.AddComponent<DestroyFall>();
+                newPokeball.AddComponent<DestroyFall>();
             }
         }
     }
