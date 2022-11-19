@@ -10,7 +10,7 @@ public class DatabaseManager : MonoBehaviour
     private MongoClient client;
     private IMongoDatabase db;
 
-    void Start()
+    void Awake()
     {
         client = new MongoClient(MONGO_URI);
         db = client.GetDatabase(DATABASE_NAME);
@@ -19,6 +19,11 @@ public class DatabaseManager : MonoBehaviour
     public List<ModelPokemon> GetPokemonSortByDescendingCapturedAt()
     {
         return db.GetCollection<ModelPokemon>("Pokemon").Find(pokemon => true).SortByDescending(i => i.capturedAt).ToList();;
+    }
+
+    public List<ModelPokemon> GetPokemonInTeam()
+    {
+        return db.GetCollection<ModelPokemon>("Pokemon").Find(pokemon => pokemon.teamPos != -1).ToList();
     }
 
     void OnApplicationQuit()
@@ -36,6 +41,7 @@ public class DatabaseManager : MonoBehaviour
         List<ModelPokemon> listPokemon = FindObjectsOfType<PokemonManager>()[0].GetRamPokemon();
         foreach (ModelPokemon modelPokemon in listPokemon)
         {
+            modelPokemon.playerId = modelPlayer.oculusId;
             pokemonCollection.InsertOne(modelPokemon);
         }
     }
