@@ -23,7 +23,7 @@ public class DatabaseManager : MonoBehaviour
 
     public List<ModelPokemon> GetPokemonInTeam()
     {
-        return db.GetCollection<ModelPokemon>("Pokemon").Find(pokemon => pokemon.teamPos != -1).ToList();
+        return db.GetCollection<ModelPokemon>("Pokemon").Find(pokemon => pokemon.teamPos != -1).SortBy(i => i.teamPos).ToList();
     }
 
     void OnApplicationQuit()
