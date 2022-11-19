@@ -9,21 +9,23 @@ public class DatabaseManager : MonoBehaviour
     private const string DATABASE_NAME = "PokemonVR_DB";
     private MongoClient client;
     private IMongoDatabase db;
+    private IMongoCollection<ModelPokemon> pokemonCollection;
 
     void Awake()
     {
         client = new MongoClient(MONGO_URI);
         db = client.GetDatabase(DATABASE_NAME);
+        pokemonCollection = db.GetCollection<ModelPokemon>("Pokemon");
     }
 
     public List<ModelPokemon> GetPokemonSortByDescendingCapturedAt()
     {
-        return db.GetCollection<ModelPokemon>("Pokemon").Find(pokemon => true).SortByDescending(i => i.capturedAt).ToList();;
+        return pokemonCollection.Find(pokemon => true).SortByDescending(i => i.capturedAt).ToList();;
     }
 
     public List<ModelPokemon> GetPokemonInTeam()
     {
-        return db.GetCollection<ModelPokemon>("Pokemon").Find(pokemon => pokemon.teamPos != -1).SortBy(i => i.teamPos).ToList();
+        return pokemonCollection.Find(pokemon => pokemon.teamPos != -1).SortBy(i => i.teamPos).ToList();
     }
 
     void OnApplicationQuit()
@@ -37,7 +39,6 @@ public class DatabaseManager : MonoBehaviour
         }
         catch {}
 
-        IMongoCollection<ModelPokemon> pokemonCollection = db.GetCollection<ModelPokemon>("Pokemon");
         List<ModelPokemon> listPokemon = FindObjectsOfType<PokemonManager>()[0].GetRamPokemon();
         foreach (ModelPokemon modelPokemon in listPokemon)
         {
