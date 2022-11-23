@@ -47,9 +47,11 @@ public class CatchPokemon : MonoBehaviour
     {
         if (anim.GetInteger("Capture") == -1)
         {
-            Destroy(gameObject);
-            if (pokemon != null)
+            if (pokemon != null) {
+                pokemon.transform.position = gameObject.transform.position;
+                Destroy(gameObject);
                 pokemon.SetActive(true);
+            }
             rb.constraints = RigidbodyConstraints.None;
         }
         else if (anim.GetInteger("Capture") == 1)

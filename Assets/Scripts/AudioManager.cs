@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
             AudioSource audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = audioClips[i];
             audioSource.playOnAwake = false;
-            audioSources[audioClips[i].name.Replace("Grito_de_", "")] = audioSource;
+            audioSources[audioClips[i].name.Replace("Grito_de_", "").Replace(".ogg", "")] = audioSource;
         }
     }
 
