@@ -8,13 +8,16 @@ public class PokemonManager : MonoBehaviour
     private List<ModelPokemon> listRamPokemon; // RAM
     private DatabaseManager dbManager;
     private List<ModelPokemon> pokemonTeam;
+    private PokemonTeam pokemonTeamManager;
 
     void Awake()
     {
         dbManager = FindObjectsOfType<DatabaseManager>()[0];
+        pokemonTeamManager = FindObjectsOfType<PokemonTeam>()[0];
         listMemoryPokemon = dbManager.GetPokemonSortByDescendingCapturedAt();
         listRamPokemon = new List<ModelPokemon>();
         pokemonTeam = dbManager.GetPokemonInTeam();
+        // Debug.Log(pokemonTeam.Count);
     }
 
     public List<ModelPokemon> GetListPokemonTeam()
@@ -29,6 +32,7 @@ public class PokemonManager : MonoBehaviour
             pokemon.teamPos = -1;
         else {
             pokemon.teamPos = contPokemonTeam;
+            pokemonTeamManager.AddNewPokemonTeam(pokemon);
             pokemonTeam.Add(pokemon);
         }
         listRamPokemon.Add(pokemon);
