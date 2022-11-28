@@ -31,7 +31,9 @@ public class CatchPokemon : MonoBehaviour
             FindObjectsOfType<AudioManager>()[0].PlayAudioSource(pokemon.name.Replace("(Clone)", ""));
             pokemon.SetActive(false);
             PokemonVariables pokemonVariables = pokemon.GetComponent<PokemonVariables>();
-            if (GetCatchFormula(pokemonVariables.GetCatchRate()) <= Random.Range(0.0f, 1.0f)) {
+
+            if (GetCatchFormula(pokemonVariables.GetCatchRate()) >= Random.Range(0.0f, 1.0f)) 
+            {
                 Debug.Log("Catching "+pokemon.name);
                 pokemonManager.AddPokemon(new ModelPokemon(pokemonVariables));
                 rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -47,9 +49,11 @@ public class CatchPokemon : MonoBehaviour
     {
         if (anim.GetInteger("Capture") == -1)
         {
-            Destroy(gameObject);
-            if (pokemon != null)
+            if (pokemon != null) {
+                pokemon.transform.position = gameObject.transform.position;
+                Destroy(gameObject);
                 pokemon.SetActive(true);
+            }
             rb.constraints = RigidbodyConstraints.None;
         }
         else if (anim.GetInteger("Capture") == 1)

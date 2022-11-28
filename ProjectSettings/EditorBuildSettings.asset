@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ForestScene.unity
     guid: 7769f33fb4fa2e5458344a36556ad760
+  - enabled: 0
+    path: Assets/Scenes/FinalMainMenu.unity
+    guid: 2fc343db9ab98bf46958a3008d24f494
+  - enabled: 0
+    path: Assets/Scenes/WaterScene.unity
+    guid: f4fc660ad7cf6eb4eb8cd6d109f7608e
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 52751655787cbc143a8647a5ed1132ba, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 314a36d2845e8884faaef5564a94ee42, type: 2}

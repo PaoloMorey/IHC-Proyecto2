@@ -9,6 +9,11 @@ using MongoDB.Bson.Serialization.Attributes;
 public class ModelPlayer
 {
     [BsonId]
-    public string oculusId { set; get; }
     public string name { set; get; }
+
+    public ModelPlayer(string playerName)
+    {
+        this.name = playerName;
+    }
+
 }

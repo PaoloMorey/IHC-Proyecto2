@@ -10,12 +10,14 @@ public class DatabaseManager : MonoBehaviour
     private MongoClient client;
     private IMongoDatabase db;
     private IMongoCollection<ModelPokemon> pokemonCollection;
+    private IMongoCollection<ModelPlayer> playerCollection;
 
     void Awake()
     {
         client = new MongoClient(MONGO_URI);
         db = client.GetDatabase(DATABASE_NAME);
         pokemonCollection = db.GetCollection<ModelPokemon>("Pokemon");
+        playerCollection = db.GetCollection<ModelPlayer>("Player");
     }
 
     public List<ModelPokemon> GetPokemonSortByDescendingCapturedAt()
@@ -28,22 +30,34 @@ public class DatabaseManager : MonoBehaviour
         return pokemonCollection.Find(pokemon => pokemon.teamPos != -1).SortBy(i => i.teamPos).ToList();
     }
 
+    public ModelPlayer GetPlayer(string name)
+    {
+        return playerCollection.Find(player => player.name.Equals(name)).SingleOrDefault();
+    }
+
+    public void InsertPlayer(string name)
+    {
+        playerCollection.InsertOne(new ModelPlayer(name));
+    }
+
     void OnApplicationQuit()
     {
-        IMongoCollection<ModelPlayer> userCollection = db.GetCollection<ModelPlayer>("Player");
-        ModelPlayer modelPlayer = new ModelPlayer();
-        modelPlayer.oculusId = "OCULUS14";
-        modelPlayer.name = "prueba";
-        try {
-            userCollection.InsertOne(modelPlayer);
-        }
-        catch {}
+        // ModelPlayer modelPlayer = new ModelPlayer();
+        // modelPlayer.name = "prueba";
+        // try {
+        //     playerCollection.InsertOne(modelPlayer);
+        // }
+        // catch {}
 
-        List<ModelPokemon> listPokemon = FindObjectsOfType<PokemonManager>()[0].GetRamPokemon();
-        foreach (ModelPokemon modelPokemon in listPokemon)
+        PokemonManager[] pokemonManagers = FindObjectsOfType<PokemonManager>();
+        if (pokemonManagers.Length != 0)
         {
-            modelPokemon.playerId = modelPlayer.oculusId;
-            pokemonCollection.InsertOne(modelPokemon);
+            // List<ModelPokemon> listPokemon = pokemonManagers[0].GetRamPokemon();
+            // foreach (ModelPokemon modelPokemon in listPokemon)
+            // {
+            //     modelPokemon.playerId = modelPlayer.name;
+            //     pokemonCollection.InsertOne(modelPokemon);
+            // }
         }
     }
 }

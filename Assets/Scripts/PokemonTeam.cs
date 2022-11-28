@@ -25,4 +25,14 @@ public class PokemonTeam : MonoBehaviour
             currentToggle.GetChild(1).GetComponent<TextMeshProUGUI>().text = aux[i].name;
         }
     }
+
+    public void AddNewPokemonTeam(ModelPokemon aux)
+    {
+        Transform currentToggle = Instantiate(toggle).transform;
+        currentToggle.parent = content;
+        RectTransform currentRectTransform = currentToggle.GetComponent<RectTransform>();
+        currentRectTransform.localPosition = Vector3.zero;
+        currentRectTransform.localScale = Vector3.one;
+        currentToggle.GetChild(1).GetComponent<TextMeshProUGUI>().text = aux.name;
+    }
 }

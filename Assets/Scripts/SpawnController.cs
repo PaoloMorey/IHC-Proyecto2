@@ -19,33 +19,56 @@ public class SpawnController : MonoBehaviour
     [SerializeField]
     GameObject pokeball;
     [SerializeField]
-    float minOffset = 2.0f;
+    float minOffset = 3.0f;
     [SerializeField]
-    float maxOffset = 4.0f;
+    float maxOffset = 6.0f;
+    [SerializeField]
+    int minLevel = 5;
+    [SerializeField]
+    int maxLevel = 20;
 
     void Start()
     {
-        float incrX = (bottomRight.x - upperLeft.x) / (rows - 1.0f);
-        float incrZ = (bottomRight.z - upperLeft.z) / (cols - 1.0f);
-
-        for (int i = 0; i < rows; i++)
+        if (pokemonArr.Length != 0) 
         {
-            for (int j = 0; j < cols; j++)
+            float incrX = (bottomRight.x - upperLeft.x) / (rows - 1.0f);
+            float incrZ = (bottomRight.z - upperLeft.z) / (cols - 1.0f);
+
+            for (int i = 0; i < rows; i++)
             {
-                GameObject pokemon = pokemonArr[Random.Range(0, pokemonArr.Length)];
-                GameObject newSpawn = Instantiate(pokemon, new Vector3(upperLeft.x + incrX*i, 
-                                        upperLeft.y, 
-                                        upperLeft.z + incrZ*j), pokemon.transform.rotation);
-                GameObject newPokeball = Instantiate(pokeball, new Vector3(upperLeft.x + incrX*i + Random.Range(minOffset, maxOffset), 
-                                                upperLeft.y, 
-                                                upperLeft.z + incrZ*j + Random.Range(minOffset, maxOffset)), pokeball.transform.rotation);
-                newSpawn.transform.parent = transform;
-                PokemonVariables pokemonVariables = newSpawn.GetComponent<PokemonVariables>();
-                pokemonVariables.SetRandomLevel(5, 20);
-                pokemonVariables.name = newSpawn.name.Replace("(Clone)", "");
-                newSpawn.AddComponent<DestroyFall>();
+                for (int j = 0; j < cols; j++)
+                {
+                    GameObject pokemon = pokemonArr[Random.Range(0, pokemonArr.Length)];
+                    GameObject newSpawn = Instantiate(pokemon, new Vector3(upperLeft.x + incrX*i, 
+                                            upperLeft.y, 
+                                            upperLeft.z + incrZ*j), pokemon.transform.rotation);
+                    GameObject newPokeball = Instantiate(pokeball, new Vector3(upperLeft.x + incrX*i + Random.Range(minOffset, maxOffset), 
+                                                    upperLeft.y, 
+                                                    upperLeft.z + incrZ*j + Random.Range(minOffset, maxOffset)), pokeball.transform.rotation);
+                    newSpawn.transform.parent = transform;
+                    PokemonVariables pokemonVariables = newSpawn.GetComponent<PokemonVariables>();
+                    pokemonVariables.SetRandomLevel(minLevel, maxLevel);
+                    pokemonVariables.name = newSpawn.name.Replace("(Clone)", "");
+                    newSpawn.AddComponent<DestroyFall>();
+                    newPokeball.AddComponent<DestroyFall>();
+                }
+            }
+        }
+        else
+        {
+            GameObject[] placedPokemonArr = GameObject.FindGameObjectsWithTag("Pokemon");
+            foreach (GameObject pokemon in placedPokemonArr) {
+                GameObject newPokeball = Instantiate(pokeball, new Vector3(pokemon.transform.position.x + Random.Range(minOffset, maxOffset), 
+                                                    pokemon.transform.position.y, 
+                                                    pokemon.transform.position.z + Random.Range(minOffset, maxOffset)), pokeball.transform.rotation);
+                PokemonVariables pokemonVariables = pokemon.GetComponent<PokemonVariables>();
+                pokemonVariables.SetRandomLevel(minLevel, maxLevel);
+                pokemonVariables.name = pokemon.name.Replace("(Clone)", "");
+                pokemon.transform.parent = transform;
+                pokemon.AddComponent<DestroyFall>();
                 newPokeball.AddComponent<DestroyFall>();
             }
         }
+        
     }
 }
