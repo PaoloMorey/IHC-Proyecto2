@@ -9,6 +9,7 @@ public class CatchPokemon : MonoBehaviour
     private Rigidbody rb;
     private Animator anim;
     private GameObject pokemon;
+    [SerializeField]
     private PokemonManager pokemonManager;
 
     void Start()
@@ -16,7 +17,6 @@ public class CatchPokemon : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         pokemon = null;
-        pokemonManager = FindObjectsOfType<PokemonManager>()[0];
     }
 
     float GetCatchFormula(int catchRate)
@@ -32,7 +32,7 @@ public class CatchPokemon : MonoBehaviour
             pokemon.SetActive(false);
             PokemonVariables pokemonVariables = pokemon.GetComponent<PokemonVariables>();
 
-            if (GetCatchFormula(pokemonVariables.GetCatchRate())*1.15f >= Random.Range(0.0f, 1.0f)) 
+            if (GetCatchFormula(pokemonVariables.GetCatchRate())*1.25f >= Random.Range(0.0f, 1.0f)) 
             {
                 Debug.Log("Catching "+pokemon.name);
                 pokemonManager.AddPokemon(new ModelPokemon(pokemonVariables));
