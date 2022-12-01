@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class TeleportSceneLoader : MonoBehaviour
 {
     [SerializeField]
-    string sceneName;
+    int sceneId;
 
-    void OnCollisionStay(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.name == "OVRPlayerController") {
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene(sceneId);
         }
     }
 }

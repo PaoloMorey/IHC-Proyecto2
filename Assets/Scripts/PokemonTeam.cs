@@ -5,6 +5,7 @@ using TMPro;
 
 public class PokemonTeam : MonoBehaviour
 {
+    [SerializeField]
     private PokemonManager pokemonManager;
     [SerializeField]
     private Transform content;
@@ -13,7 +14,6 @@ public class PokemonTeam : MonoBehaviour
 
     void Start()
     {
-        pokemonManager = FindObjectsOfType<PokemonManager>()[0];
         List<ModelPokemon> aux = pokemonManager.GetListPokemonTeam();
         for (int i = 0; i < aux.Count; i++)
         {

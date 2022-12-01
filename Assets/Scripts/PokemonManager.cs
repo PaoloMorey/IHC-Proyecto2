@@ -6,18 +6,17 @@ public class PokemonManager : MonoBehaviour
 {
     private List<ModelPokemon> listMemoryPokemon; // disk in MongoDB
     private List<ModelPokemon> listRamPokemon; // RAM
+    [SerializeField]
     private DatabaseManager dbManager;
     private List<ModelPokemon> pokemonTeam;
+    [SerializeField]
     private PokemonTeam pokemonTeamManager;
 
     void Awake()
     {
-        dbManager = FindObjectsOfType<DatabaseManager>()[0];
-        pokemonTeamManager = FindObjectsOfType<PokemonTeam>()[0];
         listMemoryPokemon = dbManager.GetPokemonSortByDescendingCapturedAt();
         listRamPokemon = new List<ModelPokemon>();
         pokemonTeam = dbManager.GetPokemonInTeam();
-        // Debug.Log(pokemonTeam.Count);
     }
 
     public List<ModelPokemon> GetListPokemonTeam()

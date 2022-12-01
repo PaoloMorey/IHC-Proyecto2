@@ -13185,6 +13185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c912755fa02ee4d8a30dad534b32a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dbManager: {fileID: 427597232}
+  pokemonTeamManager: {fileID: 2129703612}
 --- !u!4 &975635907
 Transform:
   m_ObjectHideFlags: 0
@@ -29726,6 +29728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c2c68bc410c9044bb4e2e1ad19265bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pokemonManager: {fileID: 975635906}
   content: {fileID: 1961066349}
   toggle: {fileID: 4818161673872249899, guid: cfcc0e530a0de8a44a8e301f6fb5c656, type: 3}
 --- !u!4 &2129703613

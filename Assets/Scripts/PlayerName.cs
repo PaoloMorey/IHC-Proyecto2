@@ -8,12 +8,12 @@ public class PlayerName : MonoBehaviour
     string[] names;
     GameObject[] games;
     GameObject[] newGames;
+    [SerializeField]
     private DatabaseManager dbManager;
 
     void Start()
     {
-        dbManager = FindObjectsOfType<DatabaseManager>()[0];
-        // dbManager.InsertPlayer("playerName");
+        dbManager.InsertPlayer("playerName");
         // PlayerPrefs.DeleteKey("Game 1");
         // PlayerPrefs.SetString("Game 1", "Prueba");
         // Debug.Log(PlayerPrefs.GetString("Game 1"));
