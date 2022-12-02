@@ -2,34 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerName : MonoBehaviour
 {
     string[] names;
+    [SerializeField]
     GameObject[] games;
+    [SerializeField]
     GameObject[] newGames;
-    private DatabaseManager dbManager;
 
     void Start()
-    {
-        dbManager = FindObjectsOfType<DatabaseManager>()[0];
-        // dbManager.InsertPlayer("playerName");
-        // PlayerPrefs.DeleteKey("Game 1");
-        // PlayerPrefs.SetString("Game 1", "Prueba");
-        // Debug.Log(PlayerPrefs.GetString("Game 1"));
-        games = GameObject.FindGameObjectsWithTag("Game");
-        foreach (GameObject game in games)
-            game.SetActive(false);
-        newGames = GameObject.FindGameObjectsWithTag("New Game");
-        foreach (GameObject newGame in newGames)
-            newGame.SetActive(false);
-        
-        names = new string[]{"Game 1", "Game 2", "Game 3"};
-
-        for (int i = 0; i < names.Length; i++)
+    {   
+        for (int i = 0; i < games.Length; i++)
         {
-            string playerName = PlayerPrefs.GetString(names[i]);
-            if (PlayerPrefs.GetString(names[i]) == "")
+            string playerName = PlayerPrefs.GetString(games[i].name);
+            if (playerName == "")
                 newGames[i].SetActive(true);
             else {
                 games[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = playerName;
@@ -40,12 +28,15 @@ public class PlayerName : MonoBehaviour
 
     public void SelectName(string game) 
     {
-        // string playerName = transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text;
-        dbManager.InsertPlayer("playerName");
-        // if (dbManager.GetPlayer(playerName) == null)
-        // {
-        //     // PlayerPrefs.SetString(game, playerName);
-        //     dbManager.InsertPlayer(playerName);
-        // }
+        GameObject aux = GameObject.Find("New "+game);
+        PlayerPrefs.SetString(game, aux.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text);
+        aux.SetActive(false);
+        SceneManager.LoadScene(1);
+    }
+
+    public void LoadGame(string game)
+    {
+        var a = PlayerPrefs.GetString(game);
+        SceneManager.LoadScene(1);
     }
 }
