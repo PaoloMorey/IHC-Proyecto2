@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &214290553
 RectTransform:
   m_ObjectHideFlags: 0
@@ -473,7 +473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &297378138
 RectTransform:
   m_ObjectHideFlags: 0
@@ -803,7 +803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3212441534752425833, guid: 70a300143ae53914299f18e11a6878ea, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3212441534752425833, guid: 70a300143ae53914299f18e11a6878ea, type: 3}
       propertyPath: m_TagString
@@ -2360,7 +2360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1600156450
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2617,7 +2617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3212441534752425833, guid: 70a300143ae53914299f18e11a6878ea, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3212441534752425833, guid: 70a300143ae53914299f18e11a6878ea, type: 3}
       propertyPath: m_TagString
@@ -2945,7 +2945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3212441534752425833, guid: 70a300143ae53914299f18e11a6878ea, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3212441534752425833, guid: 70a300143ae53914299f18e11a6878ea, type: 3}
       propertyPath: m_TagString
@@ -3286,6 +3286,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16db04996bde15f4da7cd8124937130a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  games:
+  - {fileID: 1990673973}
+  - {fileID: 1696141415}
+  - {fileID: 481199740}
+  newGames:
+  - {fileID: 1600156449}
+  - {fileID: 297378137}
+  - {fileID: 214290552}
+  bika: 0
 --- !u!1 &2126282912
 GameObject:
   m_ObjectHideFlags: 0

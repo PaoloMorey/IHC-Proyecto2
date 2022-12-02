@@ -11,6 +11,7 @@ public class PlayerName : MonoBehaviour
     GameObject[] games;
     [SerializeField]
     GameObject[] newGames;
+    public float bika;
 
     void Start()
     {   
