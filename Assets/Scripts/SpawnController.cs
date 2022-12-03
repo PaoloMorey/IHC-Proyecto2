@@ -5,9 +5,9 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {
     [SerializeField]
-    Vector3 upperLeft = new Vector3(5, 5, 5);
+    Vector3 upperLeft = new Vector3(5, 2.5f, 5);
     [SerializeField]
-    Vector3 bottomRight = new Vector3(55, 5, 55);
+    Vector3 bottomRight = new Vector3(55, 2.5f, 55);
     
     [SerializeField]
     int rows;

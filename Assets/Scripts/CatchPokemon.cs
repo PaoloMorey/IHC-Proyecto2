@@ -48,6 +48,7 @@ public class CatchPokemon : MonoBehaviour
     {
         if (anim.GetInteger("Capture") == -1)
         {
+            FindObjectsOfType<AudioManager>()[0].PlayAudioSourceFx(1);
             if (pokemon != null) {
                 pokemon.transform.position = gameObject.transform.position;
                 Destroy(gameObject);
@@ -57,6 +58,8 @@ public class CatchPokemon : MonoBehaviour
         }
         else if (anim.GetInteger("Capture") == 1)
         {
+            FindObjectsOfType<AudioManager>()[0].PlayAudioSourceFx(0);
+            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
             if (catchFx != null) 
             {
                 GameObject obj = Instantiate(catchFx, transform.position, transform.rotation);
