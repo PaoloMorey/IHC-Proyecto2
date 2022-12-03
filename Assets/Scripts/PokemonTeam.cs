@@ -7,9 +7,7 @@ public class PokemonTeam : MonoBehaviour
 {
     private PokemonManager pokemonManager;
     [SerializeField]
-    private Transform content;
-    [SerializeField]
-    private GameObject toggle;
+    private GameObject[] slots;
 
     void Start()
     {
@@ -17,22 +15,14 @@ public class PokemonTeam : MonoBehaviour
         List<ModelPokemon> aux = pokemonManager.GetListPokemonTeam();
         for (int i = 0; i < aux.Count; i++)
         {
-            Transform currentToggle = Instantiate(toggle).transform;
-            currentToggle.parent = content;
-            RectTransform currentRectTransform = currentToggle.GetComponent<RectTransform>();
-            currentRectTransform.localPosition = Vector3.zero;
-            currentRectTransform.localScale = Vector3.one;
-            currentToggle.GetChild(1).GetComponent<TextMeshProUGUI>().text = aux[i].name;
+            slots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = aux[i].name;
+            slots[i].SetActive(true);
         }
     }
 
     public void AddNewPokemonTeam(ModelPokemon aux)
     {
-        Transform currentToggle = Instantiate(toggle).transform;
-        currentToggle.parent = content;
-        RectTransform currentRectTransform = currentToggle.GetComponent<RectTransform>();
-        currentRectTransform.localPosition = Vector3.zero;
-        currentRectTransform.localScale = Vector3.one;
-        currentToggle.GetChild(1).GetComponent<TextMeshProUGUI>().text = aux.name;
+        slots[aux.teamPos].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = aux.name;
+        slots[aux.teamPos].SetActive(true);
     }
 }

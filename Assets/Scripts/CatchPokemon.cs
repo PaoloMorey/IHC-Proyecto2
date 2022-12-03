@@ -33,10 +33,8 @@ public class CatchPokemon : MonoBehaviour
             PokemonVariables pokemonVariables = pokemon.GetComponent<PokemonVariables>();
 
             // if (true)
-            if (GetCatchFormula(pokemonVariables.GetCatchRate())*1.25f >= Random.Range(0.0f, 1.0f)) 
+            if (GetCatchFormula(pokemonVariables.GetCatchRate())+0.1f >= Random.Range(0.0f, 1.0f)) 
             {
-                Debug.Log("Catching "+pokemon.name);
-                pokemonManager.AddPokemon(new ModelPokemon(pokemonVariables));
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 anim.SetInteger("Capture", 1);
             }
@@ -63,6 +61,7 @@ public class CatchPokemon : MonoBehaviour
             {
                 GameObject obj = Instantiate(catchFx, transform.position, transform.rotation);
                 Destroy(obj, Random.Range(0.5f, 1.0f));
+                pokemonManager.AddPokemon(new ModelPokemon(pokemon.GetComponent<PokemonVariables>()));
             }
             Destroy(gameObject);
             Destroy(pokemon);
