@@ -33,8 +33,8 @@ public class PlayerName : MonoBehaviour
     {
         GameObject aux = GameObject.Find("New "+game);
         string playerName = aux.transform.GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text;
-        if (playerName == null || playerName == "" || playerName.Length != 0) {
-            PlayerPrefs.SetString(game, aux.transform.GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text);
+        if (playerName != null && playerName != "" && playerName.Length != 0) {
+            PlayerPrefs.SetString(game, playerName);
             aux.SetActive(false);
             SceneManager.LoadScene(1);
         }

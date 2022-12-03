@@ -3,11 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class TeleportWaterScene : MonoBehaviour
 {
-    void OnCollisionEnter(Collision collision)
+    Transform player;
+
+    void Start()
     {
-        if (collision.transform.CompareTag("Player")) {
-            // SceneManager.LoadScene(2);
-            collision.transform.position = GameManager.Instance.waterPosition;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+    // void OnCollisionEnter(Collision collision)
+    void Update()
+    {
+        // Debug.Log(Vector3.Distance(player.position, transform.position));
+        // if (collision.transform.CompareTag("Player")) {
+        if (Vector3.Distance(player.position, transform.position) <= GameManager.Instance.teleportDistance) {
+            player.position = GameManager.Instance.waterPosition;
             FindObjectsOfType<SpawnController>()[0].WaterSpawn();
         }
     }

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public string playerName = "";
     public Vector3 forestPosition = new Vector3(35, 2.91f, 22);
     public Vector3 waterPosition = new Vector3(-110, 5.5f, 10);
+    public float teleportDistance = 3f;
  
     private static GameManager _instance;
  

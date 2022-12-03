@@ -3,11 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class TeleportForestScene : MonoBehaviour
 {
-    void OnCollisionEnter(Collision collision)
+    Transform player;
+
+    void Start()
     {
-        if (collision.transform.CompareTag("Player")) {
-            // SceneManager.LoadScene(1);
-            collision.transform.position = GameManager.Instance.forestPosition;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+    // void OnCollisionEnter(Collision collision)
+    void Update()
+    {
+        // Debug.Log(Vector3.Distance(player.position, transform.position));
+        // if (collision.transform.CompareTag("Player")) {
+        if (Vector3.Distance(player.position, transform.position) <= GameManager.Instance.teleportDistance) {
+            player.position = GameManager.Instance.forestPosition;
             FindObjectsOfType<SpawnController>()[0].ForestSpawn();
         }
     }

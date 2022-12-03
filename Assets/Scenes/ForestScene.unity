@@ -722,6 +722,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cd1c50a5c91e9a646abf4e947472ce48, type: 3}
   - {fileID: 8300000, guid: 735a2d1de8e7fcf4798fffd2928c0db1, type: 3}
   - {fileID: 8300000, guid: 40d9beedaf07fc34face4523d49059ce, type: 3}
+  - {fileID: 8300000, guid: 288e9b2e67ff36e4c8619240963c37c9, type: 3}
+  - {fileID: 8300000, guid: ea1cc8b3a9ef330408d30a19e62d8d99, type: 3}
+  - {fileID: 8300000, guid: 568ed9caa0e187c49b349598a341bd97, type: 3}
+  - {fileID: 8300000, guid: 19690dea8a470bf479478ba8f976934f, type: 3}
   fxClips:
   - {fileID: 8300000, guid: 3cd3e34ab6c79c24fb6c591de3178f14, type: 3}
   - {fileID: 8300000, guid: d99295d9259cf1142aa1c6451a59e1fc, type: 3}
