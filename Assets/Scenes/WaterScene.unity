@@ -16488,6 +16488,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 288e9b2e67ff36e4c8619240963c37c9, type: 3}
   - {fileID: 8300000, guid: 19690dea8a470bf479478ba8f976934f, type: 3}
   - {fileID: 8300000, guid: ea1cc8b3a9ef330408d30a19e62d8d99, type: 3}
+  fxClips: []
 --- !u!4 &1166542365
 Transform:
   m_ObjectHideFlags: 0

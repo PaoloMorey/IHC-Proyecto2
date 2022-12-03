@@ -23,6 +23,7 @@ public class ButtonTest : MonoBehaviour
         else if (OVRInput.GetDown(OVRInput.RawButton.B))
         {
             pokemonManager.SaveTeam();
+            GameManager.Instance.playerName = "";
             SceneManager.LoadScene(0);
         }
     }

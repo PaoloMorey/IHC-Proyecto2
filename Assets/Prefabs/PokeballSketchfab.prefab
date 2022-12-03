@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 959707039197293877}
   m_Layer: 0
   m_Name: PokeballSketchfab
-  m_TagString: Untagged
+  m_TagString: Pokeball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
