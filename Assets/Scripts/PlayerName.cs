@@ -11,13 +11,14 @@ public class PlayerName : MonoBehaviour
     GameObject[] games;
     [SerializeField]
     GameObject[] newGames;
-    public float bika;
 
     void Start()
     {   
+        // PlayerPrefs.DeleteAll();
         for (int i = 0; i < games.Length; i++)
         {
             string playerName = PlayerPrefs.GetString(games[i].name);
+
             if (playerName == "")
                 newGames[i].SetActive(true);
             else {
@@ -37,7 +38,7 @@ public class PlayerName : MonoBehaviour
 
     public void LoadGame(string game)
     {
-        var a = PlayerPrefs.GetString(game);
+        GameManager.Instance.playerName = PlayerPrefs.GetString(game);
         SceneManager.LoadScene(1);
     }
 }

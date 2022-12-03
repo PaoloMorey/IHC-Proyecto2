@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public int maxCatchRate = 255;
     public float maxPercentCatchRate = 0.95f;
+    public string playerName = "";
  
     private static GameManager _instance;
  
