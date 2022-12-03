@@ -33,7 +33,7 @@ public class CatchPokemon : MonoBehaviour
             PokemonVariables pokemonVariables = pokemon.GetComponent<PokemonVariables>();
 
             // if (true)
-            if (GetCatchFormula(pokemonVariables.GetCatchRate())+0.1f >= Random.Range(0.0f, 1.0f)) 
+            if (GetCatchFormula(pokemonVariables.GetCatchRate())+0.15f >= Random.Range(0.0f, 1.0f)) 
             {
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 anim.SetInteger("Capture", 1);

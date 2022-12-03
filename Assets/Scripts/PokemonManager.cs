@@ -50,7 +50,7 @@ public class PokemonManager : MonoBehaviour
         }
     }
 
-    void OnApplicationQuit()
+    public void SaveTeam()
     {
         foreach (ModelPokemon pokemon in pokemonTeam) {
             XmlSerializer serializer = new XmlSerializer(typeof(ModelPokemon));
@@ -61,5 +61,10 @@ public class PokemonManager : MonoBehaviour
                                     pokemon.teamPos.ToString(), sw.ToString());
             }
         }
+    }
+
+    void OnApplicationQuit()
+    {
+        SaveTeam();
     }
 }
