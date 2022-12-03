@@ -935,7 +935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3212441534752425835, guid: 70a300143ae53914299f18e11a6878ea, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectName
+      value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 3212441534752425835, guid: 70a300143ae53914299f18e11a6878ea, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -2278,7 +2278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u200B"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 080813200859cb447a292b82451f4879, type: 2}
   m_sharedMaterial: {fileID: 3413076809340003762, guid: 080813200859cb447a292b82451f4879, type: 2}
@@ -2750,7 +2750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3212441534752425835, guid: 70a300143ae53914299f18e11a6878ea, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectName
+      value: LoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 3212441534752425835, guid: 70a300143ae53914299f18e11a6878ea, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

@@ -14,7 +14,8 @@ public class PlayerName : MonoBehaviour
 
     void Start()
     {
-        // PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
+
         for (int i = 0; i < games.Length; i++)
         {
             string playerName = PlayerPrefs.GetString(games[i].name);
@@ -31,7 +32,7 @@ public class PlayerName : MonoBehaviour
     public void SelectName(string game) 
     {
         GameObject aux = GameObject.Find("New "+game);
-        PlayerPrefs.SetString(game, aux.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text);
+        PlayerPrefs.SetString(game, aux.transform.GetChild(0).GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text);
         aux.SetActive(false);
         SceneManager.LoadScene(1);
     }
