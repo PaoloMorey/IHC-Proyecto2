@@ -29,11 +29,11 @@ public class SpawnController : MonoBehaviour
 
     void Start()
     {
-        if (pokemonArr.Length != 0) 
+        // if (pokemonArr.Length != 0) 
         {
             ForestSpawn();
         }
-        else
+        // else
         {
             WaterSpawn();
         }

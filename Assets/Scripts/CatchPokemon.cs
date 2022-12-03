@@ -21,12 +21,12 @@ public class CatchPokemon : MonoBehaviour
 
     float GetCatchFormula(int catchRate)
     {
-        return catchRate*GameManager.Instance.maxPercentCatchRate/GameManager.Instance.maxCatchRate;
+        return catchRate*0.95f/255;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Pokemon")) {
+        if (collision.transform.CompareTag("Pokemon") || collision.transform.CompareTag("WaterPokemon")) {
             pokemon = collision.gameObject;
             FindObjectsOfType<AudioManager>()[0].PlayAudioSource(pokemon.name.Replace("(Clone)", ""));
             pokemon.SetActive(false);

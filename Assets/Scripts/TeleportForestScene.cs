@@ -14,8 +14,8 @@ public class TeleportForestScene : MonoBehaviour
     {
         // Debug.Log(Vector3.Distance(player.position, transform.position));
         // if (collision.transform.CompareTag("Player")) {
-        if (Vector3.Distance(player.position, transform.position) <= GameManager.Instance.teleportDistance) {
-            player.position = GameManager.Instance.forestPosition;
+        if (Vector3.Distance(player.position, transform.position) <= 3.5f) {
+            player.position = new Vector3(35, 2.91f, 22);
             FindObjectsOfType<SpawnController>()[0].ForestSpawn();
         }
     }

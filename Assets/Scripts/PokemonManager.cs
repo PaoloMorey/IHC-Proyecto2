@@ -25,7 +25,7 @@ public class PokemonManager : MonoBehaviour
         pokemonTeam = new List<ModelPokemon>();
         for (int i = 0; i < N; i++) {
             XmlSerializer serializer = new XmlSerializer(typeof(ModelPokemon));
-            string text = PlayerPrefs.GetString(GameManager.Instance.playerName+"_"+i.ToString());
+            string text = PlayerPrefs.GetString(PlayerPrefs.GetString("current")+"_"+i.ToString());
             if (text != "") {
                 using (var reader = new System.IO.StringReader(text))
                 {
@@ -57,7 +57,7 @@ public class PokemonManager : MonoBehaviour
             using (StringWriter sw = new StringWriter())
             {
                 serializer.Serialize(sw, pokemon);
-                PlayerPrefs.SetString(GameManager.Instance.playerName+"_"+
+                PlayerPrefs.SetString(PlayerPrefs.GetString("current")+"_"+
                                     pokemon.teamPos.ToString(), sw.ToString());
             }
         }

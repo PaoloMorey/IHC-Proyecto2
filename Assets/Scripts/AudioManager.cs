@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
             audioSource.clip = audioClips[i];
             audioSource.playOnAwake = false;
             audioSources[audioClips[i].name.Replace("Grito_de_", "").Replace(".ogg", "")] = audioSource;
+            Debug.Log(audioClips[i].name.Replace("Grito_de_", "").Replace(".ogg", ""));
         }
 
         for (int i = 0; i < fxClips.Length; i++) {

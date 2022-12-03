@@ -14,7 +14,7 @@ public class PlayerName : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.DeleteAll();
+        // PlayerPrefs.DeleteAll();
 
         for (int i = 0; i < games.Length; i++)
         {
@@ -33,16 +33,17 @@ public class PlayerName : MonoBehaviour
     {
         GameObject aux = GameObject.Find("New "+game);
         string playerName = aux.transform.GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text;
-        if (playerName != null && playerName != "" && playerName.Length != 0) {
-            PlayerPrefs.SetString(game, playerName);
-            aux.SetActive(false);
-            SceneManager.LoadScene(1);
-        }
+        // if (playerName != null && playerName != "" && playerName.Length != 0) {
+        PlayerPrefs.SetString(game, playerName);
+        PlayerPrefs.SetString("current", playerName);
+        aux.SetActive(false);
+        SceneManager.LoadScene(1);
+        // }
     }
 
     public void LoadGame(string game)
     {
-        GameManager.Instance.playerName = PlayerPrefs.GetString(game);
+        PlayerPrefs.SetString("current", PlayerPrefs.GetString(game));
         SceneManager.LoadScene(1);
     }
 }
