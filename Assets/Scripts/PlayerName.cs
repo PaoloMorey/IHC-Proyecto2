@@ -13,8 +13,8 @@ public class PlayerName : MonoBehaviour
     GameObject[] newGames;
 
     void Start()
-    {   
-        // PlayerPrefs.DeleteAll();
+    {
+        PlayerPrefs.DeleteAll();
         for (int i = 0; i < games.Length; i++)
         {
             string playerName = PlayerPrefs.GetString(games[i].name);

@@ -17,6 +17,7 @@ public class PokemonManager : MonoBehaviour
 
     void Awake()
     {
+        pokemonTeamManager = FindObjectsOfType<PokemonTeam>()[0];
         teamPositions = new int[N];
         for (int i = 0; i < N; i++)
             teamPositions[i] = i;
