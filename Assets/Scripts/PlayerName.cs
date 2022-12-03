@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Firebase.Firestore;
+using Firebase.Analytics;
+using Firebase.Extensions;
+using Firebase;
+using System;
 
 public class PlayerName : MonoBehaviour
 {
@@ -11,10 +16,40 @@ public class PlayerName : MonoBehaviour
     GameObject[] games;
     [SerializeField]
     GameObject[] newGames;
-    public float bika;
 
     void Start()
     {   
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+            FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
+            // Debug.Log("trika");
+        });
+        FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+        DocumentReference docRef = db.Collection("users").Document("Bikaclif");
+        Dictionary<string, object> user = new Dictionary<string, object>
+        {
+            { "name", "Bikaclif" }
+        };
+        docRef.SetAsync(user).ContinueWithOnMainThread(task => {
+            Debug.Log("Added data to the Bikaclif document in the users collection.");
+        });
+
+        // // Debug.Log(db);
+        // CollectionReference usersRef = db.Collection("users");
+        // // Debug.Log(usersRef);
+        // usersRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
+        // {
+        //     QuerySnapshot snapshot = task.Result;
+        // //     Debug.Log("bika");
+        // //     // foreach (DocumentSnapshot document in snapshot.Documents)
+        // //     // {
+        // //     //     Debug.Log(String.Format("User: {0}", document.Id));
+        // //     //     Dictionary<string, object> documentDictionary = document.ToDictionary();
+        // //     //     Debug.Log(String.Format("First: {0}", documentDictionary["name"]));
+        // //     // }
+
+        // //     // Debug.Log("Read all data from the users collection.");
+        // });
+
         for (int i = 0; i < games.Length; i++)
         {
             string playerName = PlayerPrefs.GetString(games[i].name);
